@@ -1,0 +1,4 @@
+repository "2dGame@dutryelias@cloud"
+  path "/"
+    br "/main"
+    co "/main"
