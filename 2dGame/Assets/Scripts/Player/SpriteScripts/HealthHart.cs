@@ -13,6 +13,13 @@ public class HealthHeart : MonoBehaviour
 
     public void SetHeartImage(HeartStatus status)
     {
+        // Adjust the RectTransform to scale correctly
+        RectTransform rectTransform = heartImage.GetComponent<RectTransform>();
+        rectTransform.localScale = new Vector3(1f, 1f, 1f);  // Ensure scale is set to 1, 1, 1
+
+        // Optionally adjust the size to make it fit perfectly
+        rectTransform.sizeDelta = new Vector2(50f, 50f);  // Set this to the desired size for your hearts
+
         switch (status)
         {
             case HeartStatus.Broken:
@@ -34,7 +41,7 @@ public class HealthHeart : MonoBehaviour
                 heartImage.sprite = damaged2;
                 break;
             case HeartStatus.damaged1:
-                heartImage.sprite = damaged2;
+                heartImage.sprite = damaged1;  // Fixed the case here
                 break;
             case HeartStatus.slightlyDamage2:
                 heartImage.sprite = slightlyDamage2;
@@ -47,7 +54,6 @@ public class HealthHeart : MonoBehaviour
                 break;
         }
     }
-
 }
 
 public enum HeartStatus
@@ -63,5 +69,4 @@ public enum HeartStatus
     slightlyDamage2 = 8,
     slightlyDamage1 = 9,
     fullHeart = 10,
-
 }
