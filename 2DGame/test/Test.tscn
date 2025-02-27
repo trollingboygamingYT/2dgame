@@ -1,31 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=3 format=3 uid="uid://dcvp8x2dsd4op"]
 
-[ext_resource type="Script" path="res://Scripts/Player/PlayerScript.gd" id="1_2pyf6"]
-[ext_resource type="Script" path="res://Scripts/Enemy/DamageCube.gd" id="2_6c0kh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq2xw"]
-size = Vector2(41, 41)
+[ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_suor4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a48gs"]
 size = Vector2(1163.5, 39.25)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_113pk"]
-size = Vector2(111, 127)
-
 [node name="Node2D" type="Node2D"]
 position = Vector2(573, 264)
 
-[node name="player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_2pyf6")
-
-[node name="ColorRect" type="ColorRect" parent="player"]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 1, 1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(20.5, 20.5)
-shape = SubResource("RectangleShape2D_jq2xw")
+[node name="player" parent="." instance=ExtResource("1_suor4")]
+position = Vector2(-513, 18)
+collision_layer = 2
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
@@ -36,12 +21,5 @@ shape = SubResource("RectangleShape2D_a48gs")
 [node name="ColorRect" type="ColorRect" parent="Ground"]
 offset_left = -574.0
 offset_top = 176.0
-offset_right = 590.0
-offset_bottom = 216.0
-
-[node name="DamageCube" type="Area2D" parent="."]
-script = ExtResource("2_6c0kh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageCube"]
-position = Vector2(-201, 112)
-shape = SubResource("RectangleShape2D_113pk")
+offset_right = 2126.0
+offset_bottom = 245.0
