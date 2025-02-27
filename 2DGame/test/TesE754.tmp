@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdfjsx5corbe5"]
+
+[ext_resource type="Texture2D" uid="uid://dvssmscfsmm6h" path="res://icons8-pixel-art.svg" id="1_g1fg1"]
+
+[sub_resource type="GDScript" id="GDScript_265w2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jbon"]
+size = Vector2(104, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l71wu"]
+size = Vector2(1149, 77)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(573, 264)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = SubResource("GDScript_265w2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_g1fg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 1.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_8jbon")
+
+[node name="Ground" type="StaticBody2D" parent="Player"]
+position = Vector2(7, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Ground"]
+position = Vector2(-7.5, 40.5)
+shape = SubResource("RectangleShape2D_l71wu")
+debug_color = Color(0.752941, 0, 0.698039, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Player/Ground"]
+offset_left = -583.0
+offset_right = 569.0
+offset_bottom = 78.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.002
+anchor_right = 0.268
+offset_left = -0.304
+offset_top = 13.0
+offset_right = 0.263977
+offset_bottom = 40.0
