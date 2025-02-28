@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=6 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_suor4"]
 [ext_resource type="PackedScene" uid="uid://bqy15movhfier" path="res://Prefabs/potion.tscn" id="3_2mi2t"]
@@ -9,9 +9,6 @@ size = Vector2(2138.5, 67.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pgh1"]
 size = Vector2(83.5, 94)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_17euh"]
-size = Vector2(96, 45)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(573, 264)
@@ -47,16 +44,4 @@ offset_bottom = 49.0
 color = Color(0.958765, 0.402266, 9.62615e-07, 1)
 
 [node name="Potion" parent="." instance=ExtResource("3_2mi2t")]
-
-[node name="TreasureChest" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TreasureChest"]
-position = Vector2(97, 149)
-shape = SubResource("RectangleShape2D_17euh")
-
-[node name="ColorRect" type="ColorRect" parent="TreasureChest/CollisionShape2D"]
-offset_left = -49.0
-offset_top = -22.0
-offset_right = 48.0
-offset_bottom = 24.0
-color = Color(0.511636, 0.268761, 0.159439, 1)
+position = Vector2(-31, 132)

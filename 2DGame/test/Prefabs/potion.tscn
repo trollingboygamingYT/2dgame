@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqy15movhfier"]
+[gd_scene load_steps=4 format=3 uid="uid://bqy15movhfier"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Potion.gd" id="1_6j3b5"]
+[ext_resource type="Texture2D" uid="uid://b4qsroieusjrw" path="res://Pictures/HealthPotion/IMG_2155.PNG" id="2_7qch1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2cutx"]
-radius = 18.0
-height = 74.0
+radius = 30.0
+height = 84.0
 
 [node name="Potion" type="Area2D"]
 position = Vector2(-22, 140)
@@ -14,9 +15,7 @@ script = ExtResource("1_6j3b5")
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_2cutx")
 
-[node name="ColorRect" type="ColorRect" parent="FullObject"]
-offset_left = -16.0
-offset_top = -36.0
-offset_right = 19.0
-offset_bottom = 35.0
-color = Color(1.97336e-06, 0.661239, 0.270869, 1)
+[node name="Sprite2D" type="Sprite2D" parent="FullObject"]
+position = Vector2(0, 18)
+scale = Vector2(0.0839506, 0.0839506)
+texture = ExtResource("2_7qch1")
