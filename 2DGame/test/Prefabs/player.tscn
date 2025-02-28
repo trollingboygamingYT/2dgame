@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bemtufr5jtgnv"]
+[gd_scene load_steps=4 format=3 uid="uid://bemtufr5jtgnv"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerScript.gd" id="1_31hs5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq2xw"]
 size = Vector2(41, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1onx"]
+size = Vector2(39, 41)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_31hs5")
@@ -12,10 +15,6 @@ script = ExtResource("1_31hs5")
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 1, 1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20.5, 20.5)
-shape = SubResource("RectangleShape2D_jq2xw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -27,5 +26,24 @@ offset_top = 11.0
 offset_right = 424.0
 offset_bottom = 72.0
 
+[node name="PotionLabel" type="Label" parent="CanvasLayer"]
+offset_left = 29.0
+offset_top = 76.0
+offset_right = 70.0
+offset_bottom = 159.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
 [node name="PlayerCamera" type="Camera2D" parent="."]
 zoom = Vector2(1.2, 1.2)
+
+[node name="PotionDetector" type="Area2D" parent="."]
+position = Vector2(21, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PotionDetector"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_jq2xw")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(20.5, 20.5)
+shape = SubResource("RectangleShape2D_f1onx")
