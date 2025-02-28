@@ -37,6 +37,9 @@ position = Vector2(-576, 185)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_1r7o2")
 
+[node name="PotionSpawn" type="Marker2D" parent="Chest"]
+position = Vector2(-573, 180)
+
 [node name="Potion" parent="." instance=ExtResource("3_2mi2t")]
 light_mask = 0
 position = Vector2(-411, 144)

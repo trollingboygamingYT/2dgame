@@ -21,6 +21,8 @@ position = Vector2(-324, 138)
 
 [node name="Chest" type="Area2D" parent="."]
 script = ExtResource("3_5vorw")
+potion_scene = null
+max_potions = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
 position = Vector2(-616, 152)
@@ -36,6 +38,9 @@ texture = ExtResource("3_e7l3u")
 position = Vector2(-576, 185)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_1r7o2")
+
+[node name="PotionSpawn" type="Marker2D" parent="Chest"]
+position = Vector2(-573, 180)
 
 [node name="Potion" parent="." instance=ExtResource("3_2mi2t")]
 light_mask = 0

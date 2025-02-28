@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqy15movhfier"]
+[gd_scene load_steps=4 format=3 uid="uid://8rry2ik7xcm"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Potion.gd" id="1_6j3b5"]
 [ext_resource type="Texture2D" uid="uid://b4qsroieusjrw" path="res://Pictures/HealthPotion/IMG_2155.PNG" id="2_7qch1"]
@@ -15,7 +15,7 @@ script = ExtResource("1_6j3b5")
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_2cutx")
 
-[node name="Sprite2D" type="Sprite2D" parent="FullObject"]
-position = Vector2(0, 18)
-scale = Vector2(0.0839506, 0.0839506)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 13)
+scale = Vector2(0.0530864, 0.0530864)
 texture = ExtResource("2_7qch1")

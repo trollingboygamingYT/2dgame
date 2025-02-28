@@ -1,7 +1,5 @@
 extends Area2D  # or StaticBody2D
 
-const DAMAGE_AMOUNT = 10
-
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
