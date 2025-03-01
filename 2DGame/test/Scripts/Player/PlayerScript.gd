@@ -71,6 +71,7 @@ func take_damage_enemy():
 	update_health_bar()
 	if health <= 0:
 		die()
+		
 func take_damage_void():
 	health -= Void_Amount
 	health = max(health, 0)

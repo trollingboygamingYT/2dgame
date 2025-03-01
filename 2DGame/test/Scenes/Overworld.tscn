@@ -1,34 +1,102 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=8 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_vneil"]
-[ext_resource type="PackedScene" uid="uid://drj20en8pxs67" path="res://Prefabs/enemy.tscn" id="2_5wwp5"]
 [ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="3_av44j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a48gs"]
-size = Vector2(2124, 67.25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwyl4"]
+size = Vector2(1419.5, 53.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8c3n"]
+size = Vector2(60, 139)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l413"]
+size = Vector2(570.5, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2xmp"]
+size = Vector2(525, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1yol"]
+size = Vector2(58, 106)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(573, 264)
 
+[node name="player" parent="." instance=ExtResource("1_vneil")]
+position = Vector2(228, 129)
+
+[node name="1" type="Label" parent="."]
+offset_left = -738.0
+offset_top = 122.0
+offset_right = -426.0
+offset_bottom = 191.0
+text = "Photo A and D and arrow keys"
+
+[node name="2" type="Label" parent="."]
+offset_left = -90.0
+offset_top = 108.0
+offset_right = 222.0
+offset_bottom = 177.0
+text = "photo spacebar"
+
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(365, 212)
+position = Vector2(110, 59)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(-158, 4)
-shape = SubResource("RectangleShape2D_a48gs")
+position = Vector2(-328.75, 162.375)
+shape = SubResource("RectangleShape2D_cwyl4")
 
 [node name="ColorRect" type="ColorRect" parent="Ground/CollisionShape2D"]
-offset_left = -1060.0
-offset_top = -34.0
-offset_right = 409.0
-offset_bottom = 17.0
-
-[node name="player" parent="." instance=ExtResource("1_vneil")]
-position = Vector2(-832, 127)
-
-[node name="Enemy" parent="." instance=ExtResource("2_5wwp5")]
-position = Vector2(-588, 127)
+offset_left = -706.0
+offset_top = -27.0
+offset_right = 708.0
+offset_bottom = 25.0
+color = Color(0.387551, 0.726003, 0.457403, 1)
 
 [node name="Void" parent="." instance=ExtResource("3_av44j")]
-position = Vector2(-464, 600)
-scale = Vector2(18.7816, -1.40726)
+position = Vector2(-819, 547)
+scale = Vector2(15.3863, -1.35887)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(405, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(828, 31)
+shape = SubResource("RectangleShape2D_l8c3n")
+debug_color = Color(0.868531, 0.000527706, 0.853934, 0.42)
+
+[node name="ColorRect" type="ColorRect" parent="Wall/CollisionShape2D"]
+offset_left = -31.0
+offset_top = -68.0
+offset_right = 30.0
+offset_bottom = 67.0
+color = Color(0.840434, 0.552899, 0, 1)
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(985.25, 215)
+shape = SubResource("RectangleShape2D_7l413")
+
+[node name="ColorRect" type="ColorRect" parent="Ground2/CollisionShape2D"]
+offset_left = -285.0
+offset_top = -21.0
+offset_right = 285.0
+offset_bottom = 19.0
+
+[node name="Ground3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
+position = Vector2(829, 18)
+shape = SubResource("RectangleShape2D_g2xmp")
+
+[node name="ColorRect" type="ColorRect" parent="Ground3/CollisionShape2D"]
+offset_left = -264.0
+offset_top = -20.0
+offset_right = 259.0
+offset_bottom = 20.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1062, -57)
+shape = SubResource("RectangleShape2D_q1yol")

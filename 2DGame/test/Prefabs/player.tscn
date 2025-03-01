@@ -17,6 +17,7 @@ offset_bottom = 40.0
 color = Color(0, 1, 1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color(0.999703, 0.0911412, 0.0732893, 1)
