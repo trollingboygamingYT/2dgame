@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcvp8x2dsd4op"]
+
+[ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_vneil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a48gs"]
+size = Vector2(2124, 67.25)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(573, 264)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(365, 212)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-158, 4)
+shape = SubResource("RectangleShape2D_a48gs")
+
+[node name="ColorRect" type="ColorRect" parent="Ground/CollisionShape2D"]
+offset_left = -1060.0
+offset_top = -34.0
+offset_right = 204.0
+offset_bottom = 17.0
+
+[node name="player" parent="." instance=ExtResource("1_vneil")]
+position = Vector2(-515, 131)
