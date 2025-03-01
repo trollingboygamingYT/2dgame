@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5ewo414j8ptx"]
+
+[ext_resource type="Script" path="res://Scripts/Chests/NormalChest.gd" id="1_tlgt1"]
+[ext_resource type="PackedScene" uid="uid://8rry2ik7xcm" path="res://Prefabs/potion.tscn" id="2_7t2qc"]
+[ext_resource type="Texture2D" uid="uid://dnb4jj1t6bugp" path="res://Pictures/Chest/IMG_2158.PNG" id="3_ac0fr"]
+[ext_resource type="Texture2D" uid="uid://dunk7b1o0dnpr" path="res://Pictures/Chest/IMG_2157.PNG" id="4_m3y83"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv1gs"]
+size = Vector2(54, 48.75)
+
+[node name="BrownChest" type="Area2D"]
+position = Vector2(-650, 152)
+script = ExtResource("1_tlgt1")
+item_scene = ExtResource("2_7t2qc")
+max_items = 3
+item_spacing = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(58, 2)
+shape = SubResource("RectangleShape2D_jv1gs")
+
+[node name="Open" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(103, -34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_ac0fr")
+
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(102, 34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_m3y83")

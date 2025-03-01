@@ -15,13 +15,11 @@ position = Vector2(573, 264)
 position = Vector2(-324, 138)
 
 [node name="BrownChest" parent="." instance=ExtResource("2_vlw1h")]
-min_items = 3
-item_spacing = 10.0
+item_spacing = 70.0
 
 [node name="Potion" parent="." instance=ExtResource("3_2mi2t")]
 light_mask = 0
 position = Vector2(-411, 144)
-pickup_cooldown = 2.0
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(2, 0)

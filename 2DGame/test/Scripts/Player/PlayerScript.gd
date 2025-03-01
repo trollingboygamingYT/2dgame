@@ -13,6 +13,10 @@ const HEAL_AMOUNT = 20
 # Potion inventory
 var potions = 0
 
+# Cooldown variables
+@export var pickup_cooldown: float = 2.0  # Cooldown duration in seconds
+var can_pickup: bool = true
+
 # UI References
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var potion_label = $CanvasLayer/PotionLabel  # Label to display potion count
@@ -22,6 +26,14 @@ func _ready():
 	print("Player Health:", health)
 	update_health_bar()
 	update_potion_label()
+
+	# Add a cooldown timer to the player
+	var cooldown_timer = Timer.new()
+	cooldown_timer.wait_time = pickup_cooldown
+	cooldown_timer.one_shot = true
+	cooldown_timer.timeout.connect(_on_cooldown_timeout)
+	add_child(cooldown_timer)
+	cooldown_timer.name = "PickupCooldownTimer"
 
 func _physics_process(delta):
 	# Apply gravity
@@ -69,6 +81,10 @@ func die():
 
 # Pickup potion function (only allows pickup if the potion is nearby)
 func pickup_nearby_potion():
+	if not can_pickup:
+		print("Pickup on cooldown!")
+		return
+
 	# Find the nearest potion
 	var closest_potion = null
 	var min_distance = 50.0  # Adjust the distance as needed
@@ -84,6 +100,10 @@ func pickup_nearby_potion():
 
 # Pickup potion function (increases potions count)
 func pickup_potion(potion: Area2D):
+	if not can_pickup:
+		print("Pickup on cooldown!")
+		return
+
 	potions += 1
 	update_potion_label()
 	print("Picked up a potion! Total:", potions)
@@ -105,3 +125,14 @@ func use_potion():
 func update_potion_label():
 	if potion_label:
 		potion_label.text = "" + str(potions)
+
+# Start pickup cooldown
+func start_pickup_cooldown():
+	can_pickup = false
+	get_node("PickupCooldownTimer").start()
+	print("Pickup cooldown started!")
+
+# Called when cooldown ends
+func _on_cooldown_timeout():
+	can_pickup = true
+	print("Pickup cooldown ended!")
