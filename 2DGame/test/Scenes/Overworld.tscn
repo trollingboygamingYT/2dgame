@@ -18,7 +18,7 @@ shape = SubResource("RectangleShape2D_a48gs")
 [node name="ColorRect" type="ColorRect" parent="Ground/CollisionShape2D"]
 offset_left = -1060.0
 offset_top = -34.0
-offset_right = 204.0
+offset_right = 409.0
 offset_bottom = 17.0
 
 [node name="player" parent="." instance=ExtResource("1_vneil")]
