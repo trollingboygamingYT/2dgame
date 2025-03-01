@@ -15,7 +15,7 @@ const HEAL_AMOUNT = 20
 var potions = 0
 
 # Cooldown variables
-@export var pickup_cooldown: float = 2.0  # Cooldown duration in seconds
+@export var pickup_cooldown: float = 0.5  # Cooldown duration in seconds
 var can_pickup: bool = true
 
 # UI References

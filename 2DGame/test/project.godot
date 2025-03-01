@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Test"
+config/name="2D Monkey's"
 run/main_scene="res://Scenes/Overworld.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icons8-pixel-art.svg"
+config/icon="res://monkey-svgrepo-com.svg"
 
 [dotnet]
 
