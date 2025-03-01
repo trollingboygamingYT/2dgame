@@ -5,4 +5,4 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		body.take_damage_enemy()
+		body.take_damage_void()

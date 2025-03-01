@@ -36,6 +36,7 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(21, 20)
 zoom = Vector2(1.2, 1.2)
 
 [node name="PotionDetector" type="Area2D" parent="."]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=5 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_vneil"]
+[ext_resource type="PackedScene" uid="uid://drj20en8pxs67" path="res://Prefabs/enemy.tscn" id="2_5wwp5"]
+[ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="3_av44j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a48gs"]
 size = Vector2(2124, 67.25)
@@ -22,4 +24,11 @@ offset_right = 409.0
 offset_bottom = 17.0
 
 [node name="player" parent="." instance=ExtResource("1_vneil")]
-position = Vector2(-515, 131)
+position = Vector2(-832, 127)
+
+[node name="Enemy" parent="." instance=ExtResource("2_5wwp5")]
+position = Vector2(-588, 127)
+
+[node name="Void" parent="." instance=ExtResource("3_av44j")]
+position = Vector2(-464, 600)
+scale = Vector2(18.7816, -1.40726)

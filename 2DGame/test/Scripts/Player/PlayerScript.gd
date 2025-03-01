@@ -8,6 +8,7 @@ const GRAVITY = 500.0
 var health = 100
 const MAX_HEALTH = 100
 const DAMAGE_AMOUNT = 10
+const Void_Amount = 2147483647
 const HEAL_AMOUNT = 20
 
 # Potion inventory
@@ -63,8 +64,15 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("use_potion"):
 		use_potion()
 
-func take_damage():
+func take_damage_enemy():
 	health -= DAMAGE_AMOUNT
+	health = max(health, 0)
+	print("Player Health:", health)
+	update_health_bar()
+	if health <= 0:
+		die()
+func take_damage_void():
+	health -= Void_Amount
 	health = max(health, 0)
 	print("Player Health:", health)
 	update_health_bar()
