@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bq6bax2lqk56m" path="res://Prefabs/mushroom_spear_enemy.tscn" id="5_bhnsb"]
 [ext_resource type="Texture2D" uid="uid://daahomvnojymi" path="res://Sprites/Enemy/MushroomEnemyLeft.PNG" id="6_jg0nm"]
 [ext_resource type="Texture2D" uid="uid://b5303e2ukn7wq" path="res://Sprites/Enemy/MushroomEnemyRight.png" id="7_msxmg"]
-[ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="8_17ve2"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q20uo"]
 vertices = PackedVector2Array(486.781, 149.93, 486.211, 177, -923.82, 177, -923.172, 141.063)
@@ -171,7 +171,7 @@ theme_override_font_sizes/font_size = 100
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="Pause" type="Button" parent="PauseMenu/Panel"]
+[node name="Resume" type="Button" parent="PauseMenu/Panel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 762.0
@@ -190,5 +190,5 @@ offset_bottom = 757.0
 theme_override_font_sizes/font_size = 100
 text = "Quit"
 
-[connection signal="pressed" from="PauseMenu/Panel/Pause" to="PauseMenu" method="_on_pause_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Quit" to="PauseMenu" method="_on_quit_pressed"]
