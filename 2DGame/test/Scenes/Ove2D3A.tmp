@@ -79,7 +79,7 @@ debug_color = Color(0.868531, 0.000527706, 0.853934, 0.42)
 offset_left = -31.0
 offset_top = -233.0
 offset_right = 30.0
-offset_bottom = 236.0
+offset_bottom = 233.0
 color = Color(0.840434, 0.552899, 0, 1)
 
 [node name="Ground2" type="StaticBody2D" parent="."]
@@ -104,7 +104,7 @@ shape = SubResource("RectangleShape2D_g2xmp")
 [node name="ColorRect" type="ColorRect" parent="Ground3/CollisionShape2d"]
 offset_left = -272.0
 offset_top = -20.0
-offset_right = 274.0
+offset_right = 259.0
 offset_bottom = 20.0
 
 [node name="Wall2" type="StaticBody2D" parent="."]
