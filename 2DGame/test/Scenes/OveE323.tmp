@@ -1,0 +1,166 @@
+[gd_scene load_steps=14 format=3 uid="uid://dcvp8x2dsd4op"]
+
+[ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_vneil"]
+[ext_resource type="PackedScene" uid="uid://8rry2ik7xcm" path="res://Prefabs/potion.tscn" id="3_6spsg"]
+[ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="3_av44j"]
+[ext_resource type="PackedScene" uid="uid://b5ewo414j8ptx" path="res://Prefabs/brown_chest.tscn" id="4_4c1y4"]
+[ext_resource type="Texture2D" uid="uid://daahomvnojymi" path="res://Sprites/Enemy/Mushroom Enemy.PNG" id="5_qv5qm"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Enemy.gd" id="5_vm4oe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwyl4"]
+size = Vector2(1419.5, 53.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8c3n"]
+size = Vector2(60, 465.296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l413"]
+size = Vector2(570.5, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2xmp"]
+size = Vector2(547.5, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1yol"]
+size = Vector2(59, 377)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pbkfr"]
+vertices = PackedVector2Array(454.141, 139, 484.906, 138.25, 484.078, 240, 180.063, 240, 154, 140, -132, 238, -410.828, 141.992, -94.9375, 139, -410.828, 142, -932.078, 150.828, -473.063, 240, -932.906, 240)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 4, 5, 8), PackedInt32Array(9, 8, 5, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-943, 250, -942, 141, -411, 132, -95, 129, 154, 130, 454, 129, 495, 128, 494, 250, 180, 250, -132, 248, -473, 250)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqbe4"]
+size = Vector2(36, 37)
+
+[node name="OverworldLevel" type="Node2D"]
+position = Vector2(573, 264)
+
+[node name="1" type="Label" parent="."]
+offset_left = -738.0
+offset_top = 122.0
+offset_right = -426.0
+offset_bottom = 191.0
+text = "Photo A and D and arrow keys"
+
+[node name="2" type="Label" parent="."]
+offset_left = -90.0
+offset_top = 108.0
+offset_right = 222.0
+offset_bottom = 177.0
+text = "photo spacebar"
+
+[node name="3" type="Label" parent="."]
+offset_left = 862.0
+offset_top = 143.0
+offset_right = 1174.0
+offset_bottom = 212.0
+text = "Try jumping on the walls"
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(110, 59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-328.75, 162.375)
+shape = SubResource("RectangleShape2D_cwyl4")
+
+[node name="ColorRect" type="ColorRect" parent="Ground/CollisionShape2D"]
+offset_left = -706.0
+offset_top = -27.0
+offset_right = 708.0
+offset_bottom = 25.0
+color = Color(0.387551, 0.726003, 0.457403, 1)
+
+[node name="Void" parent="." instance=ExtResource("3_av44j")]
+position = Vector2(-819, 547)
+scale = Vector2(15.3863, -1.35887)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(405, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(828, -131.34)
+scale = Vector2(1, 0.987156)
+shape = SubResource("RectangleShape2D_l8c3n")
+debug_color = Color(0.868531, 0.000527706, 0.853934, 0.42)
+
+[node name="ColorRect" type="ColorRect" parent="Wall/CollisionShape2D"]
+offset_left = -31.0
+offset_top = -233.0
+offset_right = 30.0
+offset_bottom = 236.0
+color = Color(0.840434, 0.552899, 0, 1)
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(985.25, 215)
+shape = SubResource("RectangleShape2D_7l413")
+
+[node name="ColorRect" type="ColorRect" parent="Ground2/CollisionShape2D"]
+offset_left = -285.0
+offset_top = -21.0
+offset_right = 285.0
+offset_bottom = 19.0
+
+[node name="Ground3" type="StaticBody2D" parent="."]
+position = Vector2(0, 43)
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Ground3"]
+position = Vector2(817.75, 18)
+shape = SubResource("RectangleShape2D_g2xmp")
+
+[node name="ColorRect" type="ColorRect" parent="Ground3/CollisionShape2d"]
+offset_left = -272.0
+offset_top = -20.0
+offset_right = 274.0
+offset_bottom = 20.0
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(64, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(998, -154)
+shape = SubResource("RectangleShape2D_q1yol")
+
+[node name="ColorRect" type="ColorRect" parent="Wall2/CollisionShape2D"]
+offset_left = -29.0
+offset_top = -184.0
+offset_right = 28.0
+offset_bottom = 190.0
+color = Color(0.839216, 0.552941, 0, 1)
+
+[node name="Potion" parent="." instance=ExtResource("3_6spsg")]
+
+[node name="BrownChest" parent="." instance=ExtResource("4_4c1y4")]
+
+[node name="player" parent="." instance=ExtResource("1_vneil")]
+position = Vector2(228, 129)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_pbkfr")
+
+[node name="enemyMushroomSpear" type="CharacterBody2D" parent="."]
+script = ExtResource("5_vm4oe")
+speed = null
+
+[node name="Sprite2D" type="Sprite2D" parent="enemyMushroomSpear"]
+position = Vector2(118, 174)
+scale = Vector2(0.0530864, 0.0530864)
+texture = ExtResource("5_qv5qm")
+
+[node name="Area2D" type="Area2D" parent="enemyMushroomSpear"]
+position = Vector2(113, 173)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyMushroomSpear/Area2D"]
+position = Vector2(5, 2.5)
+shape = SubResource("RectangleShape2D_qqbe4")
+
+[node name="RayCast2DL" type="RayCast2D" parent="enemyMushroomSpear"]
+position = Vector2(118, 174)
+target_position = Vector2(-80, 3)
+
+[node name="RayCast2DR" type="RayCast2D" parent="enemyMushroomSpear"]
+position = Vector2(118, 173)
+target_position = Vector2(82, 0)
+
+[node name="RayCast2DDown" type="RayCast2D" parent="enemyMushroomSpear"]
+position = Vector2(117, 174)
+target_position = Vector2(0, 21)
