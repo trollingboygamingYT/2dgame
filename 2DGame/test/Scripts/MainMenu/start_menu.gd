@@ -1,7 +1,9 @@
 extends CenterContainer
 
 @onready var start_game_button = %StartGameButton
-@onready var Settings_button = %SettingsButton
+
+func _ready():
+	start_game_button.grab_focus()
 
 func _on_start_game_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Overworld.tscn")

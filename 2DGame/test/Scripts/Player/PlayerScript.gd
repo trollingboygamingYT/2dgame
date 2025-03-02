@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -300.0
-const GRAVITY = 500.0
+const GRAVITY = 1000.0
 const WALL_JUMP_VELOCITY = Vector2(250, -300)  # Horizontal push when wall jumping
 
 var health = 100
@@ -79,7 +79,7 @@ func get_custom_wall_normal():
 	return Vector2.ZERO
 
 func handle_potion_use():
-	if Input.is_action_just_pressed("pickup_potion"):
+	if Input.is_action_just_pressed("interact"):
 		pickup_nearby_potion()
 	if Input.is_action_just_pressed("use_potion"):
 		use_potion()
