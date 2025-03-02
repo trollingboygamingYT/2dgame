@@ -4,6 +4,8 @@ const SPEED = 500.0
 const JUMP_VELOCITY = -300.0
 const GRAVITY = 1000.0
 const WALL_JUMP_VELOCITY = Vector2(250, -300)  # Horizontal push when wall jumping
+const ATTACK_DAMAGE = 10  # Damage dealt to enemies
+const ATTACK_RANGE = 50.0  # Range to hit enemies
 
 var health = 100
 const MAX_HEALTH = 100
@@ -70,6 +72,10 @@ func _physics_process(delta):
 
 	move_and_slide()
 	handle_potion_use()
+
+	# Player attack when pressing the attack button
+	if Input.is_action_just_pressed("attack"):
+		attack()
 
 func get_custom_wall_normal():
 	for i in range(get_slide_collision_count()):
@@ -142,3 +148,10 @@ func start_pickup_cooldown():
 
 func _on_cooldown_timeout():
 	can_pickup = true
+
+# Attack function to damage nearby enemies
+func attack():
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if enemy is CharacterBody2D and global_position.distance_to(enemy.global_position) < ATTACK_RANGE:
+			print("Attacking enemy:", enemy)
+			enemy.call("take_damage", ATTACK_DAMAGE)  # Calls the enemy's take_damage function

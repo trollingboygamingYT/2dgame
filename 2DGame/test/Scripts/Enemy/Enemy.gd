@@ -7,7 +7,10 @@ extends CharacterBody2D
 @export var sprite_right: Texture2D  # Assign the right sprite in the editor
 
 const SPEED = 180.0
+var health = 100  # Enemy health
+
 func _ready() -> void:
+	add_to_group("enemies")  # Allows player to find enemies
 	set_physics_process(false)
 	call_deferred("wait_for_physics")
 	
@@ -24,8 +27,18 @@ func _physics_process(delta: float) -> void:
 	velocity = global_position.direction_to(navigation_agent.get_next_path_position()) * SPEED
 	move_and_slide()
 	
-	
 	if velocity.x > 0:
 		sprite.texture = sprite_right  # Use right-facing sprite
 	elif velocity.x < 0:
 		sprite.texture = sprite_left   # Use left-facing sprite
+
+# Function to take damage from player attacks
+func take_damage(amount):
+	health -= amount
+	print("Enemy took", amount, "damage! Remaining health:", health)
+	if health <= 0:
+		die()
+
+func die():
+	print("Enemy has died!")
+	queue_free()
