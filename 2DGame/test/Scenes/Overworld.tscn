@@ -156,6 +156,7 @@ sprite_right = ExtResource("7_msxmg")
 script = ExtResource("8_17ve2")
 
 [node name="Panel" type="Control" parent="PauseMenu"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
