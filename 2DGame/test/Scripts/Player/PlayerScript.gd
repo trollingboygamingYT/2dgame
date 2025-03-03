@@ -111,6 +111,7 @@ func update_health_bar():
 func die():
 	print("Player has died!")
 	queue_free()
+	get_tree().change_scene_to_file("res://Scenes/RespawnScreen.tscn")
 
 func pickup_nearby_potion():
 	if not can_pickup:

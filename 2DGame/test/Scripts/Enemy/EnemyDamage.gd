@@ -2,7 +2,7 @@
 extends Area2D
 
 var damage_duration = 3.0  # Total DoT duration
-var tick_interval = 1.0  # Damage applied every second
+var tick_interval = 1.5  # Damage applied every second
 var is_in_contact = false  # To track if player is in contact with enemy
 var dot_timer = null  # Timer for DoT ticks
 var player_body = null  # Reference to the player body
