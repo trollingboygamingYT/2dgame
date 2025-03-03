@@ -41,5 +41,3 @@ offset_top = -504.0
 offset_right = 544.0
 offset_bottom = -383.0
 show_percentage = false
-
-[node name="DamageTimer" type="Timer" parent="."]

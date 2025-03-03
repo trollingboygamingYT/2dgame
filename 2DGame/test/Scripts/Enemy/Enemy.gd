@@ -1,3 +1,4 @@
+# IS VOOR PATHFINDING EN DE HEALTH VAN DE ENEMY
 extends CharacterBody2D
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D

@@ -235,6 +235,7 @@ theme_override_font_sizes/font_size = 50
 text = "RESPAWN"
 
 [node name="Quit" type="Button" parent="GameOver/GameOverScreen"]
+layout_mode = 0
 offset_left = 1041.0
 offset_top = 819.0
 offset_right = 1338.0
