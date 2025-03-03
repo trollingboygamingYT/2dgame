@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 500.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -350.0
 const GRAVITY = 1000.0
 const WALL_JUMP_VELOCITY = Vector2(250, -300)  # Horizontal push when wall jumping
 const ATTACK_DAMAGE = 10  # Damage dealt to enemies
@@ -86,7 +86,7 @@ func _physics_process(delta):
 
 			# If sliding, reduce fall speed
 			if velocity.y > 0:
-				velocity.y = GRAVITY * 0.4  # Sliding effect
+				velocity.y *= 1  # Sliding effect
 
 	# Jumping
 	if Input.is_action_just_pressed("jump"):
