@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=16 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_vneil"]
 [ext_resource type="PackedScene" uid="uid://8rry2ik7xcm" path="res://Prefabs/potion.tscn" id="3_6spsg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://daahomvnojymi" path="res://Sprites/Enemy/MushroomEnemyLeft.PNG" id="6_jg0nm"]
 [ext_resource type="Texture2D" uid="uid://b5303e2ukn7wq" path="res://Sprites/Enemy/MushroomEnemyRight.png" id="7_msxmg"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
+[ext_resource type="Script" path="res://Scripts/GameOverMenu/GameOverScreen.gd" id="9_qpps4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q20uo"]
 vertices = PackedVector2Array(486.781, 149.93, 486.211, 177, -923.82, 177, -923.172, 141.063)
@@ -190,6 +191,56 @@ offset_right = 1157.0
 offset_bottom = 757.0
 theme_override_font_sizes/font_size = 100
 text = "Quit"
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+script = ExtResource("9_qpps4")
+
+[node name="GameOverScreen" type="Control" parent="GameOver"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -342.0
+offset_top = -31.0
+offset_right = 9.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOver/GameOverScreen"]
+layout_mode = 0
+offset_right = 2260.0
+offset_bottom = 1107.0
+color = Color(1, 0, 0, 1)
+
+[node name="GameOver" type="Label" parent="GameOver/GameOverScreen"]
+layout_mode = 0
+offset_left = 756.0
+offset_top = -87.0
+offset_right = 1731.0
+offset_bottom = 257.0
+theme_override_font_sizes/font_size = 50
+text = "YOU DED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Respawn" type="Button" parent="GameOver/GameOverScreen"]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 638.0
+offset_right = 1449.0
+offset_bottom = 774.0
+theme_override_font_sizes/font_size = 50
+text = "RESPAWN"
+
+[node name="Quit" type="Button" parent="GameOver/GameOverScreen"]
+offset_left = 1041.0
+offset_top = 819.0
+offset_right = 1338.0
+offset_bottom = 955.0
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
 
 [connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Quit" to="PauseMenu" method="_on_quit_pressed"]
