@@ -5,7 +5,7 @@ const JUMP_VELOCITY = -300.0
 const GRAVITY = 1000.0
 const WALL_JUMP_VELOCITY = Vector2(250, -300)  # Horizontal push when wall jumping
 const ATTACK_DAMAGE = 10  # Damage dealt to enemies
-const ATTACK_RANGE = 50.0  # Range to hit enemies
+const ATTACK_RANGE = 100.0  # Range to hit enemies
 
 var health = 100
 const MAX_HEALTH = 100
