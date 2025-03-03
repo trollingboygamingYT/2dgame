@@ -7,6 +7,10 @@ const WALL_JUMP_VELOCITY = Vector2(250, -300)  # Horizontal push when wall jumpi
 const ATTACK_DAMAGE = 10  # Damage dealt to enemies
 const ATTACK_RANGE = 100.0  # Range to hit enemies
 
+const DASH_SPEED = 1000.0
+const DASH_DURATION = 0.2
+const DASH_COOLDOWN = 0.5
+
 var health = 100
 const MAX_HEALTH = 100
 const DAMAGE_AMOUNT = 10
@@ -19,6 +23,11 @@ var can_pickup: bool = true
 
 var can_wall_jump = true  # To prevent spamming wall jumps
 var last_wall_normal = Vector2.ZERO  # Store last wall direction
+
+var is_dashing = false
+var dash_timer = 0.0
+var dash_cooldown_timer = 0.0
+var dash_direction = 0
 
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var potion_label = $CanvasLayer/PotionLabel
@@ -45,7 +54,25 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("move_right"):
 		direction = 1
 
-	velocity.x = direction * SPEED
+	# Dash logic
+	if Input.is_action_just_pressed("dash") and not is_dashing and dash_cooldown_timer <= 0:
+		is_dashing = true
+		dash_timer = DASH_DURATION
+		dash_cooldown_timer = DASH_COOLDOWN
+		dash_direction = direction if direction != 0 else 1  # Default to right if standing still
+
+	# Apply dash
+	if is_dashing:
+		velocity.x = dash_direction * DASH_SPEED
+		dash_timer -= delta
+		if dash_timer <= 0:
+			is_dashing = false
+	else:
+		velocity.x = direction * SPEED  # Normal movement
+
+	# Handle dash cooldown
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= delta
 
 	# Detect valid walls for sliding and jumping
 	if is_on_wall():
@@ -96,7 +123,7 @@ func take_damage_enemy():
 	update_health_bar()
 	if health <= 0:
 		die()
-		
+
 func take_damage_void():
 	health -= Void_Amount
 	health = max(health, 0)
