@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=22 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_vneil"]
 [ext_resource type="PackedScene" uid="uid://8rry2ik7xcm" path="res://Prefabs/potion.tscn" id="3_6spsg"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b5303e2ukn7wq" path="res://Sprites/Enemy/MushroomEnemyRight.png" id="7_msxmg"]
 [ext_resource type="Script" uid="uid://d3kevfihv5hy5" path="res://Scripts/Map/Overworld/HitBoxBreakable.gd" id="8_7g7yc"]
 [ext_resource type="Script" uid="uid://7cg0ri0pv6q7" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
+[ext_resource type="Script" uid="uid://bjcwnb0j601me" path="res://Scripts/Map/Overworld/GoToVillage.gd" id="9_p68c8"]
+[ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="10_vd8s3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q20uo"]
 vertices = PackedVector2Array(486.781, 149.93, 486.211, 177, -923.82, 177, -923.172, 141.063)
@@ -21,7 +23,7 @@ size = Vector2(1413, 35)
 size = Vector2(651, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p68c8"]
-size = Vector2(274, 41)
+size = Vector2(429, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vd8s3"]
 size = Vector2(35, 477)
@@ -37,6 +39,12 @@ size = Vector2(166.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76uc8"]
 size = Vector2(35, 477)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7aoj"]
+size = Vector2(38.3737, 476.104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fka8p"]
+size = Vector2(782.5, 110)
 
 [node name="OverworldLevel" type="Node2D"]
 position = Vector2(573, 264)
@@ -141,6 +149,13 @@ text = "Quit"
 
 [node name="MapPart2" type="Node2D" parent="."]
 
+[node name="1" type="Label" parent="MapPart2"]
+offset_left = 1605.0
+offset_top = 595.0
+offset_right = 1733.0
+offset_bottom = 618.0
+text = "Try wall jumping"
+
 [node name="Ground2" type="StaticBody2D" parent="MapPart2"]
 position = Vector2(1161, 209)
 
@@ -149,9 +164,9 @@ position = Vector2(67.5, -2)
 shape = SubResource("RectangleShape2D_7g7yc")
 
 [node name="ColorRect" type="ColorRect" parent="MapPart2/Ground2/CollisionShape2D"]
-offset_left = -265.0
+offset_left = -325.0
 offset_top = -21.0
-offset_right = 322.0
+offset_right = 323.0
 offset_bottom = 21.0
 color = Color(0.43975, 0.707204, 0.428437, 1)
 
@@ -159,15 +174,14 @@ color = Color(0.43975, 0.707204, 0.428437, 1)
 position = Vector2(1928, 207)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Ground3"]
-position = Vector2(151, 0)
+position = Vector2(73.5, 0)
 shape = SubResource("RectangleShape2D_p68c8")
 
 [node name="ColorRect" type="ColorRect" parent="MapPart2/Ground3/CollisionShape2D"]
-visible = false
-offset_left = -137.0
-offset_top = -20.5
-offset_right = 136.0
-offset_bottom = 19.5
+offset_left = -212.0
+offset_top = -20.0
+offset_right = 213.0
+offset_bottom = 20.0
 color = Color(0.335055, 0.521488, 0.322358, 1)
 
 [node name="Wall" type="StaticBody2D" parent="MapPart2"]
@@ -211,6 +225,7 @@ color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Ground"]
 position = Vector2(1669.75, 653)
+rotation = 0.0266511
 shape = SubResource("RectangleShape2D_kepvy")
 
 [node name="ColorRect" type="ColorRect" parent="MapPart2/Ground/CollisionShape2D"]
@@ -233,6 +248,48 @@ offset_right = 19.0
 offset_bottom = 240.0
 color = Color(0, 0, 0, 1)
 
+[node name="Slope" type="StaticBody2D" parent="MapPart2"]
+rotation = -0.00782425
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Slope"]
+position = Vector2(2368.03, 388.54)
+rotation = -0.781211
+shape = SubResource("RectangleShape2D_f7aoj")
+
+[node name="ColorRect" type="ColorRect" parent="MapPart2/Slope/CollisionShape2D"]
+offset_left = -18.9347
+offset_top = -237.658
+offset_right = 21.0653
+offset_bottom = 239.342
+color = Color(0.333333, 0.521569, 0.321569, 1)
+
+[node name="GoToVillage" type="Area2D" parent="MapPart2"]
+position = Vector2(2553, 607)
+collision_mask = 2
+script = ExtResource("9_p68c8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/GoToVillage"]
+position = Vector2(3, -5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_fka8p")
+
+[node name="ColorRect" type="ColorRect" parent="MapPart2/GoToVillage/CollisionShape2D"]
+offset_left = -388.0
+offset_top = -53.0
+offset_right = 391.0
+offset_bottom = 60.0
+color = Color(3.85046e-06, 0.650668, 0.725643, 1)
+
+[node name="Void" parent="." instance=ExtResource("10_vd8s3")]
+position = Vector2(2060, 922)
+scale = Vector2(38.08, 1.64)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 538.0
+offset_bottom = 50.0
+text = "MOET LANGER GEMAAKT WORDEN "
+
 [connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="body_entered" from="MapPart2/GroundBreakable/HitBoxGround" to="MapPart2" method="_on_hit_box_ground_body_entered"]
+[connection signal="body_entered" from="MapPart2/GoToVillage" to="MapPart2/GoToVillage" method="_on_body_entered"]
