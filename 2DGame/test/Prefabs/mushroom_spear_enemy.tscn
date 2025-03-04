@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bq6bax2lqk56m"]
 
 [ext_resource type="Texture2D" uid="uid://daahomvnojymi" path="res://Sprites/Enemy/MushroomEnemyLeft.PNG" id="1_dgwug"]
-[ext_resource type="Script" path="res://Scripts/Enemy/Enemy.gd" id="1_hu88k"]
-[ext_resource type="Script" path="res://Scripts/Enemy/EnemyDamage.gd" id="3_distg"]
+[ext_resource type="Script" uid="uid://caxot88oyfmr2" path="res://Scripts/Enemy/Enemy.gd" id="1_hu88k"]
+[ext_resource type="Script" uid="uid://b05jl8r1mmve5" path="res://Scripts/Enemy/EnemyDamage.gd" id="3_distg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjhoc"]
 size = Vector2(734, 702)

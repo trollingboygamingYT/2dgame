@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b5ewo414j8ptx"]
 
-[ext_resource type="Script" path="res://Scripts/Chests/NormalChest.gd" id="1_tlgt1"]
+[ext_resource type="Script" uid="uid://8jfg5hsso6po" path="res://Scripts/Chests/NormalChest.gd" id="1_tlgt1"]
 [ext_resource type="PackedScene" uid="uid://8rry2ik7xcm" path="res://Prefabs/potion.tscn" id="2_7t2qc"]
 [ext_resource type="Texture2D" uid="uid://dnb4jj1t6bugp" path="res://Pictures/Chest/IMG_2158.PNG" id="3_ac0fr"]
 [ext_resource type="Texture2D" uid="uid://dunk7b1o0dnpr" path="res://Pictures/Chest/IMG_2157.PNG" id="4_m3y83"]

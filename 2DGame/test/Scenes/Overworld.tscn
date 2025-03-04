@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bq6bax2lqk56m" path="res://Prefabs/mushroom_spear_enemy.tscn" id="5_bhnsb"]
 [ext_resource type="Texture2D" uid="uid://daahomvnojymi" path="res://Sprites/Enemy/MushroomEnemyLeft.PNG" id="6_jg0nm"]
 [ext_resource type="Texture2D" uid="uid://b5303e2ukn7wq" path="res://Sprites/Enemy/MushroomEnemyRight.png" id="7_msxmg"]
-[ext_resource type="Script" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
+[ext_resource type="Script" uid="uid://7cg0ri0pv6q7" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q20uo"]
 vertices = PackedVector2Array(486.781, 149.93, 486.211, 177, -923.82, 177, -923.172, 141.063)

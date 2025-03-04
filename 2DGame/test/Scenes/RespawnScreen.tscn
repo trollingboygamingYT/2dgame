@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bget1o4e7q7vw"]
 
-[ext_resource type="Script" path="res://Scripts/GameOverMenu/respawn_screen.gd" id="1_k7lyo"]
+[ext_resource type="Script" uid="uid://dp6t58rsastfa" path="res://Scripts/GameOverMenu/respawn_screen.gd" id="1_k7lyo"]
 
 [node name="RespawnScreen" type="Control"]
 layout_mode = 3
