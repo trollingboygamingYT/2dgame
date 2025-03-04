@@ -50,11 +50,13 @@ position = Vector2(573, 264)
 [node name="player" parent="." instance=ExtResource("1_vneil")]
 position = Vector2(-882, 146)
 scale = Vector2(0.831336, 0.84264)
+collision_layer = 2
 
 [node name="Potion" parent="." instance=ExtResource("3_6spsg")]
 
 [node name="BrownChest" parent="." instance=ExtResource("4_4c1y4")]
 position = Vector2(-649, 172)
+collision_mask = 2
 
 [node name="NavigationRegionMapPart1" type="NavigationRegion2D" parent="."]
 position = Vector2(5, 14)

@@ -182,4 +182,4 @@ func attack():
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		if enemy is CharacterBody2D and global_position.distance_to(enemy.global_position) < ATTACK_RANGE:
 			print("Attacking enemy:", enemy)
-			enemy.call("take_damage", ATTACK_DAMAGE)  # Calls the enemy's take_damage function
+			enemy.take_damage(ATTACK_DAMAGE)  # Directly call the enemy's take_damage function

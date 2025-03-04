@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://r5i4qsk5i45p"]
+
+[ext_resource type="Script" uid="uid://rmfy5ny41l5r" path="res://mushroom_spear_enemy.gd" id="1_1nwej"]
+[ext_resource type="Texture2D" uid="uid://daahomvnojymi" path="res://Sprites/Enemy/MushroomEnemyLeft.PNG" id="1_bi0eq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nwej"]
+size = Vector2(20, 4)
+
+[node name="Mushroom_Spear_enemy" type="CharacterBody2D"]
+script = ExtResource("1_1nwej")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, -25)
+scale = Vector2(0.0623457, 0.0623457)
+texture = ExtResource("1_bi0eq")
+
+[node name="CollisionGround" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_1nwej")
