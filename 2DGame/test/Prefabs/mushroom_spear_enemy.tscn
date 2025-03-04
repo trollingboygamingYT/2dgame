@@ -24,10 +24,14 @@ position = Vector2(-1, -4)
 shape = SubResource("RectangleShape2D_1nwej")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-position = Vector2(-1, -10)
+position = Vector2(-3, -6)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
-position = Vector2(4, -10)
+position = Vector2(4, -6)
+
+[node name="RayCastWall" type="RayCast2D" parent="."]
+position = Vector2(4, -16)
+target_position = Vector2(220, 0)
 
 [node name="RayCastPlayerRight" type="RayCast2D" parent="."]
 position = Vector2(4, -16)

@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 const SPEED = 500.0
-const JUMP_VELOCITY = -350.0
+const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000.0
-const WALL_JUMP_VELOCITY = Vector2(250, -300)  # Horizontal push when wall jumping
+const WALL_JUMP_VELOCITY = Vector2(350, -350)  # Horizontal push when wall jumping
 const ATTACK_DAMAGE = 10  # Damage dealt to enemies
 const ATTACK_RANGE = 100.0  # Range to hit enemies
 

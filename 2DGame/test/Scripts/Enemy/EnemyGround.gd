@@ -12,7 +12,7 @@ var gravity: int = 800
 var direction: int = 1
 var tracking_player: bool = false  # Track player state
 
-@onready var player = $"../player"  # Adjust path to your player node
+@onready var player = $"../../player"  # Adjust path to your player node
 
 func _ready():
 	# Initialize health bar
