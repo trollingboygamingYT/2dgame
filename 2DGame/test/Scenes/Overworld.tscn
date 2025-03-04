@@ -1,18 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=19 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="PackedScene" uid="uid://bemtufr5jtgnv" path="res://Prefabs/player.tscn" id="1_vneil"]
 [ext_resource type="PackedScene" uid="uid://8rry2ik7xcm" path="res://Prefabs/potion.tscn" id="3_6spsg"]
 [ext_resource type="PackedScene" uid="uid://b5ewo414j8ptx" path="res://Prefabs/brown_chest.tscn" id="4_4c1y4"]
 [ext_resource type="Script" uid="uid://d3kevfihv5hy5" path="res://Scripts/Map/Overworld/HitBoxBreakable.gd" id="8_7g7yc"]
 [ext_resource type="Script" uid="uid://7cg0ri0pv6q7" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
-[ext_resource type="PackedScene" uid="uid://r5i4qsk5i45p" path="res://mushroom_spear_enemy.tscn" id="8_p68c8"]
+[ext_resource type="PackedScene" uid="uid://r5i4qsk5i45p" path="res://Prefabs/mushroom_spear_enemy.tscn" id="8_p68c8"]
 [ext_resource type="Script" uid="uid://bjcwnb0j601me" path="res://Scripts/Map/Overworld/GoToVillage.gd" id="9_p68c8"]
 [ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="10_vd8s3"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_q20uo"]
-vertices = PackedVector2Array(-125.492, 146.078, 473.789, 137.148, 473.203, 167, -923.641, 167, -702.344, 142.453, -923.172, 141.063)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(4, 3, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-934, 187, -933, 131, -702.278, 132.452, -125.528, 136.082, 484, 127, 483, 177)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6kyl"]
 size = Vector2(1413, 35)
@@ -56,48 +51,6 @@ scale = Vector2(0.831336, 0.84264)
 [node name="BrownChest" parent="." instance=ExtResource("4_4c1y4")]
 position = Vector2(-649, 172)
 
-[node name="NavigationRegionMapPart1" type="NavigationRegion2D" parent="."]
-position = Vector2(5, 14)
-navigation_polygon = SubResource("NavigationPolygon_q20uo")
-
-[node name="MapPart1" type="Node2D" parent="NavigationRegionMapPart1"]
-position = Vector2(-5, -14)
-
-[node name="Ground" type="StaticBody2D" parent="NavigationRegionMapPart1/MapPart1"]
-position = Vector2(-218, 212)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart1/MapPart1/Ground"]
-position = Vector2(5, -3.5)
-shape = SubResource("RectangleShape2D_d6kyl")
-
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart1/MapPart1/Ground/CollisionShape2D"]
-offset_left = -707.0
-offset_top = -19.0
-offset_right = 708.0
-offset_bottom = 21.0
-color = Color(0.359737, 0.629968, 0.402198, 1)
-
-[node name="1" type="Label" parent="NavigationRegionMapPart1/MapPart1"]
-offset_left = -738.0
-offset_top = 122.0
-offset_right = -426.0
-offset_bottom = 191.0
-text = "Photo A and D and arrow keys"
-
-[node name="2" type="Label" parent="NavigationRegionMapPart1/MapPart1"]
-offset_left = -352.0
-offset_top = 70.0
-offset_right = -40.0
-offset_bottom = 139.0
-text = "photo spacebar"
-
-[node name="3" type="Label" parent="NavigationRegionMapPart1/MapPart1"]
-offset_left = 273.0
-offset_top = 127.0
-offset_right = 585.0
-offset_bottom = 196.0
-text = "Try pressing G to dash"
-
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 script = ExtResource("8_17ve2")
 
@@ -140,155 +93,188 @@ text = "Quit"
 [node name="Void" parent="." instance=ExtResource("10_vd8s3")]
 position = Vector2(2060, 922)
 scale = Vector2(38.08, 1.64)
+collision_mask = 1
 
 [node name="Label" type="Label" parent="."]
 offset_right = 538.0
 offset_bottom = 50.0
 text = "MOET LANGER GEMAAKT WORDEN "
 
-[node name="NavigationRegionMapPart2" type="NavigationRegion2D" parent="."]
-position = Vector2(1186, 102)
-scale = Vector2(0.306084, 0.461797)
-navigation_polygon = SubResource("NavigationPolygon_q20uo")
+[node name="Mushroom_Spear_enemy" parent="." instance=ExtResource("8_p68c8")]
+position = Vector2(-178, 190)
 
-[node name="MapPart2" type="Node2D" parent="NavigationRegionMapPart2"]
-position = Vector2(-3874.75, -220.876)
-scale = Vector2(3.26708, 2.16545)
+[node name="MapPart1" type="Node2D" parent="."]
 
-[node name="1" type="Label" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="Ground" type="StaticBody2D" parent="MapPart1"]
+position = Vector2(-218, 212)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart1/Ground"]
+position = Vector2(5, -3.5)
+shape = SubResource("RectangleShape2D_d6kyl")
+
+[node name="ColorRect" type="ColorRect" parent="MapPart1/Ground/CollisionShape2D"]
+offset_left = -707.0
+offset_top = -19.0
+offset_right = 708.0
+offset_bottom = 21.0
+color = Color(0.359737, 0.629968, 0.402198, 1)
+
+[node name="1" type="Label" parent="MapPart1"]
+offset_left = -738.0
+offset_top = 122.0
+offset_right = -426.0
+offset_bottom = 191.0
+text = "Photo A and D and arrow keys"
+
+[node name="2" type="Label" parent="MapPart1"]
+offset_left = -352.0
+offset_top = 70.0
+offset_right = -40.0
+offset_bottom = 139.0
+text = "photo spacebar"
+
+[node name="3" type="Label" parent="MapPart1"]
+offset_left = 273.0
+offset_top = 127.0
+offset_right = 585.0
+offset_bottom = 196.0
+text = "Try pressing G to dash"
+
+[node name="MapPart2" type="Node2D" parent="."]
+position = Vector2(0.000976563, 0.00012207)
+scale = Vector2(1, 0.999998)
+
+[node name="1" type="Label" parent="MapPart2"]
 offset_left = 1605.0
 offset_top = 595.0
 offset_right = 1733.0
 offset_bottom = 618.0
 text = "Try wall jumping"
 
-[node name="Ground2" type="StaticBody2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="Ground2" type="StaticBody2D" parent="MapPart2"]
 position = Vector2(1161, 209)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/Ground2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Ground2"]
 position = Vector2(67.5, -2)
 shape = SubResource("RectangleShape2D_7g7yc")
 
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/Ground2/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MapPart2/Ground2/CollisionShape2D"]
 offset_left = -325.0
 offset_top = -21.0
 offset_right = 323.0
 offset_bottom = 21.0
 color = Color(0.43975, 0.707204, 0.428437, 1)
 
-[node name="Ground3" type="StaticBody2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="Ground3" type="StaticBody2D" parent="MapPart2"]
 position = Vector2(1928, 207)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/Ground3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Ground3"]
 position = Vector2(73.5, 0)
 shape = SubResource("RectangleShape2D_p68c8")
 
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/Ground3/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MapPart2/Ground3/CollisionShape2D"]
 offset_left = -212.0
 offset_top = -20.0
 offset_right = 213.0
 offset_bottom = 20.0
 color = Color(0.335055, 0.521488, 0.322358, 1)
 
-[node name="Wall" type="StaticBody2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="Wall" type="StaticBody2D" parent="MapPart2"]
 position = Vector2(1414, 240)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/Wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Wall"]
 position = Vector2(155, 184.5)
 shape = SubResource("RectangleShape2D_vd8s3")
 
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/Wall/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MapPart2/Wall/CollisionShape2D"]
 offset_left = -18.0
 offset_top = -196.0
 offset_right = 19.0
 offset_bottom = 237.0
 color = Color(0, 0, 0, 1)
 
-[node name="GroundBreakable" type="StaticBody2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="GroundBreakable" type="StaticBody2D" parent="MapPart2"]
 position = Vector2(1549, 102)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/GroundBreakable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/GroundBreakable"]
 position = Vector2(122.5, 105)
 shape = SubResource("RectangleShape2D_36n5q")
 
-[node name="HitBoxGround" type="Area2D" parent="NavigationRegionMapPart2/MapPart2/GroundBreakable"]
+[node name="HitBoxGround" type="Area2D" parent="MapPart2/GroundBreakable"]
 position = Vector2(-1549, -102)
 script = ExtResource("8_7g7yc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/GroundBreakable/HitBoxGround"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/GroundBreakable/HitBoxGround"]
 position = Vector2(1669, 206.875)
 shape = SubResource("RectangleShape2D_5di4m")
 
-[node name="BreakableColor" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/GroundBreakable/HitBoxGround/CollisionShape2D"]
+[node name="BreakableColor" type="ColorRect" parent="MapPart2/GroundBreakable/HitBoxGround/CollisionShape2D"]
 offset_left = -118.0
 offset_top = -21.0
 offset_right = 119.0
 offset_bottom = 21.0
 color = Color(1, 0, 0, 1)
 
-[node name="Ground" type="StaticBody2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="Ground" type="StaticBody2D" parent="MapPart2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/Ground"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Ground"]
 position = Vector2(1669.75, 653)
 rotation = 0.0266511
 shape = SubResource("RectangleShape2D_kepvy")
 
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/Ground/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MapPart2/Ground/CollisionShape2D"]
 offset_left = -118.0
 offset_top = -11.0
 offset_right = 109.0
 offset_bottom = 9.0
 color = Color(0, 0, 0, 1)
 
-[node name="Wall2" type="StaticBody2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="Wall2" type="StaticBody2D" parent="MapPart2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/Wall2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Wall2"]
 position = Vector2(1770, 424.5)
 shape = SubResource("RectangleShape2D_76uc8")
 
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/Wall2/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MapPart2/Wall2/CollisionShape2D"]
 offset_left = -17.0
 offset_top = -196.0
 offset_right = 19.0
 offset_bottom = 240.0
 color = Color(0, 0, 0, 1)
 
-[node name="Slope" type="StaticBody2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="Slope" type="StaticBody2D" parent="MapPart2"]
 rotation = -0.00782425
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/Slope"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/Slope"]
 position = Vector2(2368.03, 388.54)
 rotation = -0.781211
 shape = SubResource("RectangleShape2D_f7aoj")
 
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/Slope/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MapPart2/Slope/CollisionShape2D"]
 offset_left = -18.9347
 offset_top = -237.658
 offset_right = 21.0653
 offset_bottom = 239.342
 color = Color(0.333333, 0.521569, 0.321569, 1)
 
-[node name="GoToVillage" type="Area2D" parent="NavigationRegionMapPart2/MapPart2"]
+[node name="GoToVillage" type="Area2D" parent="MapPart2"]
 position = Vector2(2553, 607)
 collision_mask = 2
 script = ExtResource("9_p68c8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegionMapPart2/MapPart2/GoToVillage"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapPart2/GoToVillage"]
 position = Vector2(3, -5)
 shape = SubResource("RectangleShape2D_fka8p")
 
-[node name="ColorRect" type="ColorRect" parent="NavigationRegionMapPart2/MapPart2/GoToVillage/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MapPart2/GoToVillage/CollisionShape2D"]
 offset_left = -388.0
 offset_top = -53.0
 offset_right = 391.0
 offset_bottom = 60.0
 color = Color(3.85046e-06, 0.650668, 0.725643, 1)
 
-[node name="Mushroom_Spear_enemy" parent="." instance=ExtResource("8_p68c8")]
-position = Vector2(-178, 190)
-
 [connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Quit" to="PauseMenu" method="_on_quit_pressed"]
-[connection signal="body_entered" from="NavigationRegionMapPart2/MapPart2/GroundBreakable/HitBoxGround" to="NavigationRegionMapPart2/MapPart2" method="_on_hit_box_ground_body_entered"]
-[connection signal="body_entered" from="NavigationRegionMapPart2/MapPart2/GoToVillage" to="NavigationRegionMapPart2/MapPart2/GoToVillage" method="_on_body_entered"]
+[connection signal="body_entered" from="MapPart2/GroundBreakable/HitBoxGround" to="MapPart2" method="_on_hit_box_ground_body_entered"]
+[connection signal="body_entered" from="MapPart2/GoToVillage" to="MapPart2/GoToVillage" method="_on_body_entered"]
