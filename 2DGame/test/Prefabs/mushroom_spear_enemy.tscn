@@ -25,13 +25,16 @@ shape = SubResource("RectangleShape2D_1nwej")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-3, -6)
+collide_with_areas = true
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(4, -6)
+collide_with_areas = true
 
 [node name="RayCastWall" type="RayCast2D" parent="."]
 position = Vector2(4, -16)
 target_position = Vector2(220, 0)
+collide_with_areas = true
 
 [node name="RayCastPlayerRight" type="RayCast2D" parent="."]
 position = Vector2(4, -16)
@@ -42,6 +45,7 @@ position = Vector2(-1, -16)
 target_position = Vector2(-191, -2)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
 script = ExtResource("3_tdh00")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

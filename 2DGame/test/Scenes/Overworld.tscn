@@ -28,7 +28,7 @@ size = Vector2(552, 27.5)
 size = Vector2(270, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vd8s3"]
-size = Vector2(40.478, 296.252)
+size = Vector2(40.4771, 296.252)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5di4m"]
 size = Vector2(48, 293)
@@ -64,7 +64,7 @@ size = Vector2(413, 82)
 position = Vector2(573, 264)
 
 [node name="player" parent="." instance=ExtResource("1_vneil")]
-position = Vector2(2098, 229)
+position = Vector2(-19.0002, 89)
 scale = Vector2(0.831336, 0.84264)
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
@@ -113,6 +113,8 @@ collision_mask = 1
 
 [node name="OverWorldPart1" type="Node2D" parent="."]
 
+[node name="InvisibleWall" type="StaticBody2D" parent="OverWorldPart1"]
+
 [node name="Mushroom_Spear_enemy" parent="OverWorldPart1" instance=ExtResource("8_p68c8")]
 position = Vector2(580, 117)
 scale = Vector2(1.45263, 1.45263)
@@ -159,7 +161,6 @@ offset_bottom = 16.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Slope"]
 position = Vector2(1027.04, 217.564)
 rotation = 0.585751
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7g7yc")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/Slope/CollisionShape2D"]
@@ -187,15 +188,14 @@ position = Vector2(1609, 248)
 script = ExtResource("8_7g7yc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/HitBoxGround"]
-visible = false
 position = Vector2(1811, 291.5)
 shape = SubResource("RectangleShape2D_36n5q")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/HitBoxGround/CollisionShape2D"]
 offset_left = -135.0
-offset_top = -11.5
+offset_top = -12.0
 offset_right = 136.0
-offset_bottom = 16.5
+offset_bottom = 17.0
 color = Color(1, 0, 0, 1)
 
 [node name="Wall" type="StaticBody2D" parent="OverWorldPart1"]
@@ -206,7 +206,7 @@ scale = Vector2(1.00109, 0.998298)
 shape = SubResource("RectangleShape2D_vd8s3")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/Wall/CollisionShape2D"]
-offset_left = -20.0
+offset_left = -21.0
 offset_top = -148.0
 offset_right = 20.0
 offset_bottom = 148.0
@@ -318,7 +318,6 @@ position = Vector2(3555, -62)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Slope2"]
 position = Vector2(3911.58, 122.504)
 rotation = 0.621112
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_age8n")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/Slope2/CollisionShape2D"]
@@ -377,10 +376,10 @@ offset_bottom = 224.0
 text = "photo spacebar"
 
 [node name="3" type="Label" parent="Lables"]
-offset_left = 224.0
-offset_top = 37.0
-offset_right = 536.0
-offset_bottom = 106.0
+offset_left = 222.0
+offset_top = 41.0
+offset_right = 534.0
+offset_bottom = 110.0
 text = "Try left clicking on the enemy to kill him"
 
 [node name="4" type="Label" parent="Lables"]
