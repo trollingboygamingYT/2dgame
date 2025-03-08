@@ -1,12 +1,13 @@
 [gd_scene load_steps=23 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="Script" uid="uid://dqayj6j18t3w0" path="res://Scripts/Player/Player.gd" id="1_p68c8"]
+[ext_resource type="Resource" uid="uid://cv2uhsacp6ml2" path="res://Prefabs/DefaultMovementData.tres" id="2_s3goe"]
 [ext_resource type="Script" uid="uid://7cg0ri0pv6q7" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
 [ext_resource type="Script" uid="uid://bjcwnb0j601me" path="res://Scripts/Map/Overworld/GoToVillage.gd" id="9_p68c8"]
 [ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="10_vd8s3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56v6n"]
-size = Vector2(45, 34)
+size = Vector2(18, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6kyl"]
 size = Vector2(1058.5, 35)
@@ -18,16 +19,13 @@ size = Vector2(171.5, 68)
 size = Vector2(779, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7g7yc"]
-size = Vector2(286.287, 37.0345)
+size = Vector2(320.588, 37.0345)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p68c8"]
-size = Vector2(552, 27.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_36n5q"]
-size = Vector2(270, 33)
+size = Vector2(582, 27.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vd8s3"]
-size = Vector2(40.4771, 296.252)
+size = Vector2(40.4771, 249.172)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5di4m"]
 size = Vector2(48, 293)
@@ -63,20 +61,26 @@ size = Vector2(413, 82)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 floor_constant_speed = true
+floor_snap_length = 3.0
 script = ExtResource("1_p68c8")
+movement_data = ExtResource("2_s3goe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(33.5, 33)
+position = Vector2(47, 37)
 shape = SubResource("RectangleShape2D_56v6n")
 
 [node name="ColorRect" type="ColorRect" parent="Player"]
-offset_left = 11.0
-offset_top = 15.0
-offset_right = 56.0
-offset_bottom = 50.0
+offset_left = 31.0
+offset_top = 4.0
+offset_right = 65.0
+offset_bottom = 70.0
 color = Color(0, 0, 0, 1)
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
+
+[node name="CoyoteJumpTimer" type="Timer" parent="Player"]
+wait_time = 0.1
+one_shot = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 script = ExtResource("8_17ve2")
@@ -117,14 +121,7 @@ offset_bottom = 757.0
 theme_override_font_sizes/font_size = 100
 text = "Quit"
 
-[node name="Void" parent="." instance=ExtResource("10_vd8s3")]
-position = Vector2(1168, 1330)
-scale = Vector2(38.08, 1.64)
-collision_mask = 1
-
 [node name="OverWorldPart1" type="Node2D" parent="."]
-
-[node name="InvisibleWall" type="StaticBody2D" parent="OverWorldPart1"]
 
 [node name="Ground" type="StaticBody2D" parent="OverWorldPart1"]
 position = Vector2(-218, 212)
@@ -166,51 +163,39 @@ offset_bottom = 16.0
 [node name="Slope" type="StaticBody2D" parent="OverWorldPart1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Slope"]
-position = Vector2(1027.04, 217.564)
-rotation = 0.585751
+position = Vector2(1030.53, 240.351)
+rotation = 0.698132
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7g7yc")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/Slope/CollisionShape2D"]
-offset_left = -143.0
+offset_left = -161.0
 offset_top = -19.0
-offset_right = 141.0
+offset_right = 193.0
 offset_bottom = 21.0
 
 [node name="Ground4" type="StaticBody2D" parent="OverWorldPart1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground4"]
-position = Vector2(1400, 294.25)
+position = Vector2(1385, 340.25)
 shape = SubResource("RectangleShape2D_p68c8")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/Ground4/CollisionShape2D"]
-offset_left = -302.0
+offset_left = -291.0
 offset_top = -14.0
-offset_right = 276.0
+offset_right = 290.0
 offset_bottom = 14.0
-
-[node name="HitBoxGround" type="Area2D" parent="OverWorldPart1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/HitBoxGround"]
-position = Vector2(1811, 291.5)
-shape = SubResource("RectangleShape2D_36n5q")
-
-[node name="ColorRect" type="ColorRect" parent="OverWorldPart1/HitBoxGround/CollisionShape2D"]
-offset_left = -135.0
-offset_top = -12.0
-offset_right = 136.0
-offset_bottom = 17.0
-color = Color(1, 0, 0, 1)
 
 [node name="Wall" type="StaticBody2D" parent="OverWorldPart1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Wall"]
-position = Vector2(1696.26, 427.874)
+position = Vector2(1696.26, 451.374)
 scale = Vector2(1.00109, 0.998298)
 shape = SubResource("RectangleShape2D_vd8s3")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/Wall/CollisionShape2D"]
 offset_left = -21.0
-offset_top = -148.0
+offset_top = -125.0
 offset_right = 20.0
 offset_bottom = 148.0
 
@@ -337,6 +322,11 @@ offset_right = 207.0
 offset_bottom = 41.0
 color = Color(0, 0.754271, 0.508909, 1)
 
+[node name="Void" parent="OverWorldPart1" instance=ExtResource("10_vd8s3")]
+position = Vector2(1168, 1330)
+scale = Vector2(38.08, 1.64)
+collision_mask = 1
+
 [node name="Lables" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="Lables"]
@@ -411,5 +401,4 @@ text = "MSS maken dat dit de final boss van het spel en dat je efkes er tegen ka
 
 [connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Quit" to="PauseMenu" method="_on_quit_pressed"]
-[connection signal="body_entered" from="OverWorldPart1/HitBoxGround" to="OverWorldPart1/HitBoxGround" method="_on_body_entered"]
 [connection signal="body_entered" from="OverWorldPart1/GoToVillageOverWorld" to="OverWorldPart1/GoToVillageOverWorld" method="_on_body_entered"]
