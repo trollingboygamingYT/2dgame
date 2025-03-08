@@ -1,12 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=28 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="Script" uid="uid://dqayj6j18t3w0" path="res://Scripts/Player/Player.gd" id="1_p68c8"]
+[ext_resource type="Script" uid="uid://d3kevfihv5hy5" path="res://Scripts/Map/Overworld/HitBoxBreakable.gd" id="8_7g7yc"]
 [ext_resource type="Script" uid="uid://7cg0ri0pv6q7" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
+[ext_resource type="Texture2D" uid="uid://bk8nr5361p423" path="res://Pictures/Chest/Chest Open.png" id="8_p68c8"]
+[ext_resource type="Script" uid="uid://bbvt2h1fyo3xj" path="res://Scripts/Chests/BrownChest.gd" id="8_vd8s3"]
 [ext_resource type="Script" uid="uid://bjcwnb0j601me" path="res://Scripts/Map/Overworld/GoToVillage.gd" id="9_p68c8"]
+[ext_resource type="Texture2D" uid="uid://cea1wxcnhrnwl" path="res://Pictures/Chest/Chest Closed.png" id="9_vd8s3"]
 [ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="10_vd8s3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56v6n"]
-size = Vector2(45, 34)
+size = Vector2(66, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6kyl"]
 size = Vector2(1058.5, 35)
@@ -59,19 +63,21 @@ size = Vector2(1095.25, 79)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umvct"]
 size = Vector2(413, 82)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2q4w"]
+size = Vector2(62, 50)
+
 [node name="OverworldLevel" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-floor_constant_speed = true
 script = ExtResource("1_p68c8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(33.5, 33)
+position = Vector2(23, 20)
 shape = SubResource("RectangleShape2D_56v6n")
 
 [node name="ColorRect" type="ColorRect" parent="Player"]
-offset_left = 11.0
-offset_top = 15.0
+offset_left = -9.0
+offset_top = -9.0
 offset_right = 56.0
 offset_bottom = 50.0
 color = Color(0, 0, 0, 1)
@@ -189,6 +195,7 @@ offset_right = 276.0
 offset_bottom = 14.0
 
 [node name="HitBoxGround" type="Area2D" parent="OverWorldPart1"]
+script = ExtResource("8_7g7yc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/HitBoxGround"]
 position = Vector2(1811, 291.5)
@@ -409,7 +416,28 @@ offset_right = 5166.0
 offset_bottom = 849.0
 text = "MSS maken dat dit de final boss van het spel en dat je efkes er tegen kan vechten  en dat je defeat wordt en in groene area wordt gegooid"
 
+[node name="BrownChest" type="Area2D" parent="."]
+script = ExtResource("8_vd8s3")
+open_texture = ExtResource("8_p68c8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrownChest"]
+position = Vector2(169, 98)
+shape = SubResource("RectangleShape2D_p2q4w")
+
+[node name="Open" type="Sprite2D" parent="BrownChest"]
+visible = false
+position = Vector2(171, 98)
+scale = Vector2(0.171713, 0.171713)
+texture = ExtResource("8_p68c8")
+
+[node name="Closed" type="Sprite2D" parent="BrownChest"]
+position = Vector2(170, 100)
+scale = Vector2(0.171713, 0.171713)
+texture = ExtResource("9_vd8s3")
+
 [connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="body_entered" from="OverWorldPart1/HitBoxGround" to="OverWorldPart1/HitBoxGround" method="_on_body_entered"]
 [connection signal="body_entered" from="OverWorldPart1/GoToVillageOverWorld" to="OverWorldPart1/GoToVillageOverWorld" method="_on_body_entered"]
+[connection signal="body_entered" from="BrownChest" to="BrownChest" method="_on_body_entered"]
+[connection signal="body_exited" from="BrownChest" to="BrownChest" method="_on_body_exited"]
