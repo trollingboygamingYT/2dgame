@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="Script" uid="uid://dqayj6j18t3w0" path="res://Scripts/Player/Player.gd" id="1_p68c8"]
-[ext_resource type="Resource" uid="uid://cv2uhsacp6ml2" path="res://Prefabs/DefaultMovementData.tres" id="2_s3goe"]
+[ext_resource type="Resource" uid="uid://cv2uhsacp6ml2" path="res://Resources/DefaultMovementData.tres" id="2_s3goe"]
 [ext_resource type="Script" uid="uid://7cg0ri0pv6q7" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
 [ext_resource type="Script" uid="uid://bjcwnb0j601me" path="res://Scripts/Map/Overworld/GoToVillage.gd" id="9_p68c8"]
 [ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="10_vd8s3"]
@@ -165,7 +165,6 @@ offset_bottom = 16.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Slope"]
 position = Vector2(1030.53, 240.351)
 rotation = 0.698132
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7g7yc")
 
 [node name="ColorRect" type="ColorRect" parent="OverWorldPart1/Slope/CollisionShape2D"]
