@@ -7,7 +7,7 @@ var just_wall_jumped = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
-
+@onready var starting_position = global_position
 
 func _physics_process(delta):
 	apply_gravity(delta)
@@ -73,3 +73,7 @@ func handle_air_acceleration(input_axis, delta):
 func apply_friction(input_axis, delta):
 	if input_axis == 0 and is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, movement_data.friction  * delta)
+
+
+func _on_hazard_detector_enemy_area_entered(area: Area2D) -> void:
+	global_position = starting_position

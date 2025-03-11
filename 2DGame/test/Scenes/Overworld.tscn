@@ -1,13 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcvp8x2dsd4op"]
+[gd_scene load_steps=26 format=3 uid="uid://dcvp8x2dsd4op"]
 
 [ext_resource type="Script" uid="uid://dqayj6j18t3w0" path="res://Scripts/Player/Player.gd" id="1_p68c8"]
 [ext_resource type="Resource" uid="uid://cv2uhsacp6ml2" path="res://Resources/DefaultMovementData.tres" id="2_s3goe"]
+[ext_resource type="Texture2D" uid="uid://cu65ro5awbixt" path="res://monkey-svgrepo-com.svg" id="3_d6kyl"]
+[ext_resource type="PackedScene" uid="uid://ohnnrai08qwg" path="res://Del/Prefabs/spikes.tscn" id="6_s7wd7"]
 [ext_resource type="Script" uid="uid://7cg0ri0pv6q7" path="res://Scripts/PauseMenu/PauseMenu.gd" id="8_17ve2"]
 [ext_resource type="Script" uid="uid://bjcwnb0j601me" path="res://Scripts/Map/Overworld/GoToVillage.gd" id="9_p68c8"]
 [ext_resource type="PackedScene" uid="uid://bvrs267sclwf4" path="res://Prefabs/void.tscn" id="10_vd8s3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56v6n"]
-size = Vector2(18, 66)
+size = Vector2(60, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36n5q"]
+size = Vector2(56, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6kyl"]
 size = Vector2(1058.5, 35)
@@ -60,27 +65,38 @@ size = Vector2(413, 82)
 [node name="OverworldLevel" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(0, 52)
+collision_layer = 2
 floor_constant_speed = true
 floor_snap_length = 3.0
 script = ExtResource("1_p68c8")
 movement_data = ExtResource("2_s3goe")
 
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(45.75, 38.25)
+scale = Vector2(0.080625, 0.080625)
+texture = ExtResource("3_d6kyl")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(47, 37)
+position = Vector2(46, 37)
 shape = SubResource("RectangleShape2D_56v6n")
 
-[node name="ColorRect" type="ColorRect" parent="Player"]
-offset_left = 31.0
-offset_top = 4.0
-offset_right = 65.0
-offset_bottom = 70.0
-color = Color(0, 0, 0, 1)
-
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
+position = Vector2(42, 38)
+position_smoothing_speed = 200.0
 
 [node name="CoyoteJumpTimer" type="Timer" parent="Player"]
 wait_time = 0.1
 one_shot = true
+
+[node name="HazardDetector(Enemy)" type="Area2D" parent="Player"]
+position = Vector2(42, 38)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HazardDetector(Enemy)"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_36n5q")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 script = ExtResource("8_17ve2")
@@ -125,6 +141,7 @@ text = "Quit"
 
 [node name="Ground" type="StaticBody2D" parent="OverWorldPart1"]
 position = Vector2(-218, 212)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground"]
 position = Vector2(-172.25, -3.5)
@@ -137,6 +154,7 @@ offset_right = 529.0
 offset_bottom = 17.0
 
 [node name="Ground2" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground2"]
 position = Vector2(53, 157)
@@ -147,8 +165,10 @@ offset_left = -86.0
 offset_top = -34.0
 offset_right = 86.0
 offset_bottom = 34.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Ground3" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground3"]
 position = Vector2(528, 139)
@@ -159,8 +179,10 @@ offset_left = -390.0
 offset_top = -16.0
 offset_right = 392.0
 offset_bottom = 16.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Slope" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Slope"]
 position = Vector2(1030.53, 240.351)
@@ -172,8 +194,10 @@ offset_left = -161.0
 offset_top = -19.0
 offset_right = 193.0
 offset_bottom = 21.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Ground4" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground4"]
 position = Vector2(1385, 340.25)
@@ -184,8 +208,10 @@ offset_left = -291.0
 offset_top = -14.0
 offset_right = 290.0
 offset_bottom = 14.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Wall" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Wall"]
 position = Vector2(1696.26, 451.374)
@@ -197,8 +223,10 @@ offset_left = -21.0
 offset_top = -125.0
 offset_right = 20.0
 offset_bottom = 148.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Wall2" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Wall2"]
 position = Vector2(1923, 427.5)
@@ -209,8 +237,10 @@ offset_left = -24.0
 offset_top = -146.0
 offset_right = 24.0
 offset_bottom = 149.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Ground5" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground5"]
 position = Vector2(1810.5, 598)
@@ -221,8 +251,10 @@ offset_left = -137.0
 offset_top = -22.0
 offset_right = 137.0
 offset_bottom = 24.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Ground6" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground6"]
 position = Vector2(2097, 294.5)
@@ -235,6 +267,7 @@ offset_right = 150.0
 offset_bottom = 14.0
 
 [node name="Wall3" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Wall3"]
 position = Vector2(2231, 124.75)
@@ -247,6 +280,7 @@ offset_right = 16.0
 offset_bottom = 156.0
 
 [node name="Wall4" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Wall4"]
 position = Vector2(2104, 15.5)
@@ -259,6 +293,7 @@ offset_right = 17.0
 offset_bottom = 181.0
 
 [node name="Ground7" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground7"]
 position = Vector2(2542, -20.5)
@@ -271,6 +306,7 @@ offset_right = 295.0
 offset_bottom = 11.0
 
 [node name="Ground8" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground8"]
 position = Vector2(3497.5, -20.5)
@@ -283,6 +319,7 @@ offset_right = 224.0
 offset_bottom = 12.0
 
 [node name="Slope2" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Slope2"]
 position = Vector2(3911.58, 122.504)
@@ -296,6 +333,7 @@ offset_right = 246.0
 offset_bottom = 14.0
 
 [node name="Ground9" type="StaticBody2D" parent="OverWorldPart1"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverWorldPart1/Ground9"]
 position = Vector2(4635, 869)
@@ -334,6 +372,7 @@ offset_top = -234.0
 offset_right = 493.0
 offset_bottom = -184.0
 text = "MOET LANGER GEMAAKT WORDEN "
+metadata/_edit_use_anchors_ = true
 
 [node name="1" type="Label" parent="Lables"]
 offset_left = -820.0
@@ -345,9 +384,10 @@ text = "Photo A and D and arrow keys"
 [node name="2" type="Label" parent="Lables"]
 offset_left = -285.0
 offset_top = 155.0
-offset_right = 27.0
-offset_bottom = 224.0
+offset_right = -164.0
+offset_bottom = 178.0
 text = "photo spacebar"
+metadata/_edit_use_anchors_ = true
 
 [node name="3" type="Label" parent="Lables"]
 offset_left = 222.0
@@ -355,6 +395,7 @@ offset_top = 41.0
 offset_right = 534.0
 offset_bottom = 110.0
 text = "Try left clicking on the enemy to kill him"
+metadata/_edit_use_anchors_ = true
 
 [node name="4" type="Label" parent="Lables"]
 offset_left = 1226.0
@@ -362,6 +403,7 @@ offset_top = 240.0
 offset_right = 1538.0
 offset_bottom = 309.0
 text = "Press E to pickup potion and A to use it"
+metadata/_edit_use_anchors_ = true
 
 [node name="5" type="Label" parent="Lables"]
 offset_left = 1465.0
@@ -369,12 +411,13 @@ offset_top = 498.0
 offset_right = 1662.0
 offset_bottom = 533.0
 text = "Press E to Open the chest"
+metadata/_edit_use_anchors_ = true
 
 [node name="6" type="Label" parent="Lables"]
 offset_left = -472.0
 offset_top = 117.0
 offset_right = -73.0
-offset_bottom = 186.0
+offset_bottom = 140.0
 text = "MSS dat de main character hier staf of zwaard vindt"
 
 [node name="7" type="Label" parent="Lables"]
@@ -398,6 +441,19 @@ offset_right = 5166.0
 offset_bottom = 849.0
 text = "MSS maken dat dit de final boss van het spel en dat je efkes er tegen kan vechten  en dat je defeat wordt en in groene area wordt gegooid"
 
+[node name="Spikes" parent="." instance=ExtResource("6_s7wd7")]
+position = Vector2(884, 124)
+
+[node name="Spikes2" parent="." instance=ExtResource("6_s7wd7")]
+position = Vector2(846, 124)
+
+[node name="Spikes3" parent="." instance=ExtResource("6_s7wd7")]
+position = Vector2(808, 124)
+
+[node name="Spikes4" parent="." instance=ExtResource("6_s7wd7")]
+position = Vector2(770, 124)
+
+[connection signal="area_entered" from="Player/HazardDetector(Enemy)" to="Player" method="_on_hazard_detector_enemy_area_entered"]
 [connection signal="pressed" from="PauseMenu/Panel/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="body_entered" from="OverWorldPart1/GoToVillageOverWorld" to="OverWorldPart1/GoToVillageOverWorld" method="_on_body_entered"]
